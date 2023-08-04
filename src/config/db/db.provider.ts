@@ -3,6 +3,7 @@ import { Module } from '@nestjs/common';
 import { TypeOrmModule, TypeOrmModuleAsyncOptions } from '@nestjs/typeorm';
 import { DBConfigModule } from './db.module';
 import { DBConfigService } from './db.service';
+import { User } from 'src/common/entities/user.entity';
 
 @Module({
   imports: [
@@ -17,8 +18,7 @@ import { DBConfigService } from './db.service';
         name: dbConfigService.name,
         database: dbConfigService.name,
         synchronize: true, // Only on Dev
-        entities: [
-        ],
+        entities: [User],
 
         autoLoadEntities: true,
 
