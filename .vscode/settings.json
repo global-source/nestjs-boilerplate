@@ -1,0 +1,17 @@
+{
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": true
+    },
+    // "editor.formatOnSave": true,
+    "eslint.alwaysShowStatus": true,
+    "files.autoSave": "onFocusChange",
+    "typescript.updateImportsOnFileMove.enabled": "prompt",
+    "todo-tree.general.tags": [
+        "BUG",
+        "PATCH",
+        "TODO",
+        "RECHECK",
+        "NOTE"
+    ],
+    "workbench.editor.showTabs": true
+}
