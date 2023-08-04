@@ -9,6 +9,7 @@ import {
 } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { Public } from 'src/common/decorator/public.decorator';
+import { User } from 'src/common/entities/user.entity';
 
 @Controller('auth')
 export class AuthController {
@@ -19,8 +20,8 @@ export class AuthController {
   // To Enforce 200 instead of 201, on creating new token
   @HttpCode(HttpStatus.OK)
   @Post('login')
-  singIn(@Body() signInDto: Record<string, any>) {
-    return this.authService.singin(signInDto.username, signInDto.password);
+  singIn(@Body() signInDto: User) {
+    return this.authService.singin(signInDto.email, signInDto.password);
   }
 
   @Get('profile')
