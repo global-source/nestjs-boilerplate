@@ -1,0 +1,30 @@
+version: '3.7'
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: development
+    container_name: my_app
+    volumes:
+      - .:/usr/src/app
+    ports:
+      - 3000:3000
+    command: npm run start:dev
+    env_file:
+      - .env
+    depends_on:
+      - postgres
+
+  postgres:
+    container_name: postgres
+    image: postgres
+    env_file:
+      - .db.env
+    ports:
+      # If you want to use it in dev db-tool and you already have local or running postgres,
+      # then change port and connect
+      - 5432:5432
+    volumes:
+      # Local dir reference for postgres data
+      - ./data/db:/var/lib/postgresql/data
