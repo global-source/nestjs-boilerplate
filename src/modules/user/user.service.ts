@@ -32,6 +32,14 @@ export class UserService {
   }
 
   async findOne(email: string): Promise<User | undefined> {
-    return await await this.user.findOne({ where: { email: email } });
+    return await this.user.findOne({ where: { email: email } });
+  }
+
+  async isActive(email: string): Promise<boolean> {
+    return (await this.user.findOne({
+      where: { email: email, deleted_at: null },
+    }))
+      ? true
+      : false;
   }
 }
